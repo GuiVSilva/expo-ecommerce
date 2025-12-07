@@ -7,6 +7,10 @@ const app = express()
 
 app.use(clerkMiddleware())
 
-app.listen(ENV.PORT, () => {
-  console.log('Server is running on port 3000'), connectDB()
-})
+const startServer = async () => {
+  await connectDB()
+
+  app.listen(ENV.PORT, () => console.log('Server is running on port 3000'))
+}
+
+startServer()
